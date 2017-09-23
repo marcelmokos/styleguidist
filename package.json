@@ -1,0 +1,42 @@
+{
+  "name": "styleguidist",
+  "version": "1.0.0",
+  "description": "styleguidist styleguide",
+  "main": "src/index.js",
+  "repository": "https://github.com/marcelmokos/styleguidist.git",
+  "author": "Marcel Mokoš (https://github.com/marcelmokos)",
+  "license": "MIT",
+  "scripts": {
+    "flow:setup": "flow-typed install && flow-typed update",
+    "flow": "flow --show-all-errors",
+    "flow:watch": "flow-watch",
+    "flow:coverage": "flow coverage ./src/ --color",
+    "prepush": "yarn test",
+    "test": "jest",
+    "test:watch": "yarn test --watch",
+    "test:update": "yarn test --update",
+    "test:coverage": "yarn test --coverage",
+    "lint": "eslint \"src/**\" --cache",
+    "lint:fix": "yarn lint --fix",
+    "lint:staged": "yarn lint:fix --max-warnings=0",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "lint:staged",
+      "git add"
+    ],
+    "*.{json,css}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.2.0",
+    "babel-preset-react-app": "^3.0.2",
+    "eslint-config-with-prettier": "^1.0.1",
+    "flow-bin": "^0.55.0",
+    "flow-typed": "^2.1.5",
+    "flow-watch": "^1.1.1"
+  }
+}
